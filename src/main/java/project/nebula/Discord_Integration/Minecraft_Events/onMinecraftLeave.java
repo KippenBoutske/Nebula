@@ -29,7 +29,7 @@ public class onMinecraftLeave implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         EmbedBuilder embed = new EmbedBuilder();
-        embed.setAuthor(Emoji.fromUnicode("U+1F534") + " ・ " + event.getPlayer().getName(), null ,"https://mc-heads.net/avatar/" + event.getPlayer().getUniqueId() + "/avatar.png");
+        embed.setAuthor(Emoji.fromUnicode("U+1F534").getFormatted() + " ・ " + event.getPlayer().getName(), null ,"https://mc-heads.net/avatar/" + event.getPlayer().getUniqueId() + "/avatar.png");
         embed.setColor(Color.RED);
 
         if (jda.getTextChannelById(config.getString("Discord_ChatID")) == null) {
@@ -40,7 +40,7 @@ public class onMinecraftLeave implements Listener {
             jda.getTextChannelById(config.getString("Discord_ChatID")).sendMessageEmbeds(embed.build()).queue();
         }
 
-        if (Bukkit.getOnlinePlayers().size() - 1 == 0) {
+        if (Bukkit.getOnlinePlayers().size() - 1 <= 0) {
             jda.getPresence().setActivity(Activity.playing(getServer().getName()));
             jda.getPresence().setStatus(OnlineStatus.IDLE);
 

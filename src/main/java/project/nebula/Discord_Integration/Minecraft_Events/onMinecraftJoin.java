@@ -29,7 +29,7 @@ public class onMinecraftJoin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         EmbedBuilder embed = new EmbedBuilder();
-        embed.setAuthor(Emoji.fromUnicode("U+1F7E2") + " ・ " + event.getPlayer().getName(), null ,"https://mc-heads.net/avatar/" + event.getPlayer().getUniqueId() + "/avatar.png");
+        embed.setAuthor(Emoji.fromUnicode("U+1F7E2").getFormatted() + " ・ " + event.getPlayer().getName(), null ,"https://mc-heads.net/avatar/" + event.getPlayer().getUniqueId() + "/avatar.png");
         embed.setColor(Color.GREEN);
         if (jda.getTextChannelById(config.getString("Discord_ChatID")) == null) {
             Bukkit.getLogger().warning("--- Nebula | Error ---");
@@ -41,7 +41,7 @@ public class onMinecraftJoin implements Listener {
 
 
 
-        if (Bukkit.getOnlinePlayers().size() - 1 == 0) {
+        if (Bukkit.getOnlinePlayers().size() - 1 <= 0) {
             jda.getPresence().setActivity(Activity.playing(Bukkit.getServer().getName()));
             jda.getPresence().setStatus(OnlineStatus.IDLE);
 
